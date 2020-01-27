@@ -1,0 +1,42 @@
+- Siendo X un objeto csv 
+
+	X.head() -> detallar las primeras 5 filas
+
+	X.info() -> descripcion rapida de los datos (numero total de filas, tipo de cada atributo, numero de valores null, etc)
+
+	X["atributo"].value_counts() -> detalla la cantidad de apariciones de cada valor de ese atributo (util para atributos que representan categorias)
+
+	X.describe() -> da informacion sobre cada atributo (cantidad de instancias con valor, media, std, minimo, max, 25%, 50%, 75%)
+
+	X.hist('ver parametros') -> histograma de cada atributo
+
+- Para crear el test set se usa ~20% de los datos
+	- La idea es elegir elementos al azar
+	- Pero hay que tener en cuenta de que siempre sean los mismos
+		- Sino, en algún momento el algoritmo habrá trabajado con todos los datos
+	- Una forma de hacerlo es usando un hash del identificar de cada instancia
+		- Por cada elemento se ve el último bit
+		- Si es menor o igual a 51 (~%20 de 256)
+		- El elemento pertenece al test set
+
+	- Si no se tiene un identificador para las instancias, se puede usar el número de fila
+		- Hay que asegurar que si se agregan nuevos datos se agreguen al final de la lista
+		- Y no se pueden borrar filas (o habría que hacer algo para remapear el numero de filas)
+		
+	- Otra forma es armar un identificador utilizando caracteristicas de las instancias que sean constantes
+
+	- Scikit Learn provee distintas funciones para separar los datos:
+
+		from sklearn.model_selection import train_test_split
+		train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
+
+
+
+
+
+
+
+
+
+
+
